@@ -39,6 +39,31 @@ function spawnEmoji() {
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
 
+// Preload images
+const imageUrls = [
+    'https://images4.alphacoders.com/137/1373841.png',
+    'https://images6.alphacoders.com/137/1373834.png',
+    'https://images3.alphacoders.com/139/1399980.jpg',
+    'https://images3.alphacoders.com/137/1373840.png'
+];
+let imagesLoaded = 0;
+imageUrls.forEach(url => {
+    const img = new Image();
+    img.src = url;
+    img.onload = () => {
+        imagesLoaded++;
+        if (imagesLoaded === imageUrls.length) {
+            startSlideshow();
+        }
+    };
+    img.onerror = () => {
+        imagesLoaded++;
+        if (imagesLoaded === imageUrls.length) {
+            startSlideshow();
+        }
+    };
+});
+
 function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.remove('active');
@@ -53,6 +78,7 @@ function nextSlide() {
     showSlide(currentSlide);
 }
 
-// Start slideshow
-showSlide(currentSlide);
-setInterval(nextSlide, 4000);
+function startSlideshow() {
+    showSlide(currentSlide);
+    setInterval(nextSlide, 1500);
+}
