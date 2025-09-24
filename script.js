@@ -15,7 +15,7 @@ clickMeBtn.addEventListener('click', function() {
 
 // Flying emoji logic
 function spawnEmoji() {
-    const emojis = ['👁️', '�', '�', '�', '�‍', '👩‍🦱', '👩‍🦳'];
+    const emojis = ['🎨', '�️', '🖌️', '🎭', '🖍️', '📝', '✏️', '🧑‍🎨'];
     const emoji = document.createElement('div');
     emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     emoji.style.position = 'fixed';
